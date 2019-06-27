@@ -5,7 +5,7 @@
 #include "config.h"
 
 
-void dft(double *ps, double **x)
+void dft(double *ps)
 {
 	FILE *in = fopen("datapipe", "r");
 	FILE *out = fopen("data.txt", "w");
@@ -18,18 +18,19 @@ void dft(double *ps, double **x)
 		ps[i] = 0.0;
 		tdoa[i] = 0.0;
 	}
-	for (int n = 0; n < N_DFT; n++)
+	for (int n = 0; n < N; n++)
 	{
 		double t;
-		fscanf(in, "%lf %lf %lf %lf %lf", &t, &x[0][n], &x[1][n], &x[2][n], &x[3][n]);
-		fprintf(out, "%f,%f,%f,%f,%f\n", t, x[0][n], x[1][n], x[2][n], x[3][n]);
+		double phones[4];
+		fscanf(in, "%lf %lf %lf %lf %lf", &t, &phones[0], &phones[1], &phones[2], &phones[3]);
+		fprintf(out, "%f,%f,%f,%f,%f\n", t, phones[0], phones[1], phones[2], phones[3]);
 		if (n == 0) printf("\ntime: %f\n", t);
 
 		double angle = 2*M_PI*n*F0/FS;
 		for (int h = 0; h < N_PHN; h++)
 		{
-			real[h] += cos(angle)*x[h][n];
-			imag[h] -= sin(angle)*x[h][n];
+			real[h] += cos(angle)*phones[h];
+			imag[h] -= sin(angle)*phones[h];
 		}
 	}
 

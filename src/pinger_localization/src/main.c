@@ -17,12 +17,8 @@ int main()
 {
 	// while (true) 
 	{
-		double *ps = (double*) malloc(N_PHN*sizeof(double));
-		double **x = (double**) malloc(N_PHN*N_DFT*sizeof(double));
-		dft(ps, x);
-
-		free(ps);
-		free(x);
+		double ps[N_PHN];
+		dft(ps);
 	}
 
 	return 0;
