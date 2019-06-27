@@ -1,17 +1,18 @@
-CXX		= gcc
-RMV 	= rm -rf
-CFLAGS 	= 
-LFLAGS 	= -I. -lm
+BIN = bin
+SRC1 = src/pinger_simulation
+SRC2 = src/pinger_localization
 
-SRC 	= src
-BIN  	= bin
+all: pinger_simulation pinger_localization 
 
-all: data main
+pinger_simulation:
+	cd $(SRC1) && make 
+	cp $(SRC1)/$(BIN)/* $(BIN)
+	
+pinger_localization:
+	cd $(SRC2) && make 
+	cp $(SRC2)/$(BIN)/* $(BIN)
 
-data:
-	$(CXX) $(CFLAGS) $(SRC)/data.c $(SRC)/config.h -o $(BIN)/data $(LFLAGS)
-
-main:
-	$(CXX) $(CFLAGS) $(SRC)/main.c -o $(BIN)/main $(LFLAGS)
-
-
+clean: 
+	cd $(SRC1) && make clean
+	cd $(SRC2) && make clean
+	rm $(BIN)/*
