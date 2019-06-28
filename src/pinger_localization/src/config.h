@@ -1,6 +1,11 @@
-/**
- * @file 
+/**	@file config.h
+ *	@brief Contains constants needed to calculate DOA (direction-of-arrival).
  *
+ *	These values should match the simulated settings in pinger_simulation, or
+ *  represent real world settings.
+ *
+ *  @author David Zhang (Davarco)
+ *  @bug No known bugs.
  */
 #ifndef CONFIG_H
 #define CONFIG_H

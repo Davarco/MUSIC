@@ -1,10 +1,8 @@
-/*
- * Acoustic-MUSIC: Underwater pinger localization using Multiple Signal
- * Classification.
- *
- * Developed for the AVBotz AUV team. (www.avbotz.com)
- *
- * @author David Zhang
+/**	@file main.c
+ * 	@brief Runs MUSIC for AVBotz's acoustic localization system.
+ * 	
+ * 	@author David Zhang (Davarco)
+ * 	@bugs No known bugs.
  */
 #include <stdio.h>
 #include <stdlib.h>

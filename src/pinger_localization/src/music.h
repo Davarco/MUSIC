@@ -1,3 +1,10 @@
+/**
+ * @file music.h
+ * @brief Function declarations for MUSIC (Multiple Signal Classification).
+ *
+ * @author David Zhang (Davarco)
+ * @bugs No known bugs.
+ */
 #ifndef MUSIC_H
 #define MUSIC_H 
 

@@ -1,10 +1,15 @@
+/**
+ * @file matrix.h
+ * @brief Function declarations for real and complex matrix operations.
+ * 
+ * @author David Zhang (Davarco)
+ * @bug No known bugs.
+ */
 #ifndef MATRIX_H
 #define MATRIX_H
 
 #include <string>
 
-/*
- */
 void prt(double *A, int m, int n, char *msg);
 void prt_complex(double *Ar, double *Ai, int m, int n, char *msg);
 void mul(double *A, double *B, int m, int p, int n, double *C);
