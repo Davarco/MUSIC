@@ -10,15 +10,18 @@
 
 #include <string>
 
-void prt(double *A, int m, int n, char *msg);
-void prt_complex(double *Ar, double *Ai, int m, int n, char *msg);
-void mul(double *A, double *B, int m, int p, int n, double *C);
-void mul_complex(double *Ar, double *Ai, double *Br, double *Bi,
+void print(double *A, int m, int n, char *msg);
+void print_complex(double *Ar, double *Ai, int m, int n, char *msg);
+void product(double *A, double *B, int m, int p, int n, double *C);
+void product_complex(double *Ar, double *Ai, double *Br, double *Bi,
 		int m, int p, int n, double *Cr, double *Ci);
 void add(double *A, double *B, int m, int n, double *C);
-void sub(double *A, double *B, int m, int n, double *C);
-void trp(double *A, int m, int n, double *C);
-void trp_complex(double *Ar, double *Ai, int m, int n, double *Cr, double *Ci);
-void scl(double *A, int m, int n, double k);
+void subtract(double *A, double *B, int m, int n, double *C);
+void transpose(double *A, int m, int n, double *C);
+void transpose_complex(double *Ar, double *Ai, int m, int n, 
+		double *Cr, double *Ci);
+void scale(double *A, int m, int n, double k);
+void eigen(double *A, int n, double *val, double *vec);
+void eigenvalues(double *A, int n, double *val);
 
 #endif

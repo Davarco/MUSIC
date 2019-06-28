@@ -30,9 +30,11 @@ void dft(double *ps)
 	{
 		double t;
 		double phones[4];
-		fscanf(in, "%lf %lf %lf %lf %lf", &t, &phones[0], &phones[1], &phones[2], &phones[3]);
-		fprintf(out, "%f,%f,%f,%f,%f\n", t, phones[0], phones[1], phones[2], phones[3]);
-		if (n == 0) printf("\ntime: %f\n", t);
+		fscanf(in, "%lf %lf %lf %lf %lf", &t, 
+				&phones[0], &phones[1], &phones[2], &phones[3]);
+		fprintf(out, "%f,%f,%f,%f,%f\n", t, 
+				phones[0], phones[1], phones[2], phones[3]);
+		// if (n == 0) printf("\ntime: %f\n", t);
 
 		double angle = 2*M_PI*n*F0/FS;
 		for (int h = 0; h < N_PHN; h++)
@@ -74,16 +76,16 @@ void music(double *tdoa)
 		Ar[r] = cos(angle);
 		Ai[r] = sin(angle);
 	}
-	// prt_complex(Ar, Ai, M, 1, "\nA: ");
+	// print_complex(Ar, Ai, M, 1, "\nA: ");
 	for (int r = 1; r <= N; r++)
 	{	
 		double angle = 2.*M_PI*F0*r;
 		Sr[r-1] = cos(angle);
 		Si[r-1] = sin(angle);
 	}
-	// prt_complex(Sr, Si, 1, N, "\nS: ");
-	mul_complex(Ar, Ai, Sr, Si, M, 1, N, Xr, Xi);	
-	// prt_complex(Xr, Xi, M, N, "\nX: ");	
+	// print_complex(Sr, Si, 1, N, "\nS: ");
+	product_complex(Ar, Ai, Sr, Si, M, 1, N, Xr, Xi);	
+	// print_complex(Xr, Xi, M, N, "\nX: ");	
 	free(Ar); 
 	free(Ai);
 	free(Sr); 
@@ -93,16 +95,14 @@ void music(double *tdoa)
 	double *XTi = (double*) malloc(N*M*sizeof(double));
 	double *Rr = (double*) malloc(M*M*sizeof(double));
 	double *Ri = (double*) malloc(M*M*sizeof(double));
-	trp_complex(Xr, Xi, M, N, XTr, XTi);
-	prt_complex(XTr, XTi, N, M, "\nX (Transpose): ");
-	mul_complex(Xr, Xi, XTr, XTi, M, N, M, Rr, Ri);
+	transpose_complex(Xr, Xi, M, N, XTr, XTi);
+	// print_complex(XTr, XTi, N, M, "\nX (Transpose): ");
+	product_complex(Xr, Xi, XTr, XTi, M, N, M, Rr, Ri);
 	free(XTr);
 	free(XTi);
 	free(Xr);
 	free(Xi); 
-	prt_complex(Rr, Ri, M, M, "\nCovariance Matrix: ");
-
-
+	print_complex(Rr, Ri, M, M, "\nCovariance Matrix: ");
 }
 
 
