@@ -75,7 +75,7 @@ void music(double *tdoa)
 	{
 		double angle = 2.*M_PI*tdoa[i];
 		Ar[i] = cos(angle);
-		Ai[i] = sin(angle);
+		Ai[i] = -sin(angle);
 	}
 	// print_complex(Ar, Ai, M, 1, "\nA: ");
 	for (int i = 0; i < N; i++)
