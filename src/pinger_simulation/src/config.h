@@ -13,18 +13,18 @@
  * The phones are placed as a square around the center, equally spaced.
  *
  * *******
- * * 3 1 *
- * * 2 4 *
+ * * 2 1 *
+ * * 4 3 *
  * ******* 
  */
 #define NUM_PHONES 4
 #define SPACING 0.0127
 
 /*
- * Pinger settings.
+ * Pinger settings. North-East coordinate plane.
  */
-#define PINGER_X_LOC 4.2631
-#define PINGER_Y_LOC 9.1983
+#define PINGER_X_LOC 5.2
+#define PINGER_Y_LOC 5.2
 #define F0 25000.
 #define T0 1./F0
 #define NOISE 0.003

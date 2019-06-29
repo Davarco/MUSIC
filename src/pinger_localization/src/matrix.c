@@ -2,10 +2,7 @@
  * 	@brief Functions used for real and complex matrix operations.
  *
  *	@author David Zhang (Davarco)
- *	@bugs Eigen method doesn't produce correct result. Using just eigenvalues
- *	for now, since eigenvectors aren't needed, but a fix would be nice. Also,
- *	the eigen method uses Jacobi transformations which isn't the most efficient
- *	for large matrices.
+ *	@bugs  
  */
 #include <stdio.h>
 #include <math.h>
@@ -32,6 +29,20 @@ void print_complex(double *Ar, double *Ai, int m, int n, char *msg)
 			printf("%0.15f + %0.15fi  ", Ar[n*r+c], Ai[n*r+c]);
 		printf("\n");
 	}
+}
+
+void identity(double *A, int n)
+{
+	for (int r = 0; r < n; r++)
+		for (int c = 0; c < n; c++)
+			A[r*n+c] = (r == c) ? 1. : 0.;
+}
+
+void copy(double *A, int m, int n, double *B)
+{
+	for (int r = 0; r < n; r++)
+		for (int c = 0; c < n; c++)
+			B[r*n+c] = A[r*n+c];
 }
 
 void product(double *A, double *B, int m, int p, int n, double *C)
@@ -86,15 +97,15 @@ void subtract(double *A, double *B, int m, int n, double *C)
 			C[n*r+c] = A[n*r+c] - B[n*r+c];
 }
 
-void transpose(double *A, int m, int n, double *C)
+void transpose(double *A, int m, int n, double *B)
 {
 	for (int r = 0; r < m; r++)
 		for (int c = 0; c < n; c++)
-			C[m*c+r] = A[n*r+c];
+			B[m*c+r] = A[n*r+c];
 }
 
 void transpose_complex(double *Ar, double *Ai, int m, int n, 
-		double *Cr, double *Ci)
+		double *Br, double *Bi)
 {
 	for (int r = 0; r < m; r++)
 	{
@@ -102,8 +113,8 @@ void transpose_complex(double *Ar, double *Ai, int m, int n,
 		{
 			// When transposing a complex matrix, the imaginary component is
 			// multiplied by -1.
-			Cr[m*c+r] = Ar[n*r+c];
-			Ci[m*c+r] = -Ai[n*r+c];
+			Br[m*c+r] = Ar[n*r+c];
+			Bi[m*c+r] = -Ai[n*r+c];
 		}
 	}
 }
@@ -115,13 +126,46 @@ void scale(double *A, int m, int n, double a)
 			A[n*r+c] = a*A[n*r+c];
 }
 
+void slice(double *A, int n, int m1, int m2, int n1, int n2, double *B)
+{
+	int i = 0;
+	for (int r = m1; r < m2; r++)
+		for (int c = n1; c < n2; c++)
+			B[i++] = A[r*n+c];
+}
+
+void inverse(double *A, int n, double *B)
+{
+	identity(B, n);
+
+	for (int i = 0; i < n; i++)
+	{
+		double k = A[i*n+i];
+		for (int c = 0; c < n; c++)
+		{
+			A[i*n+c] /= k;
+			B[i*n+c] /= k;
+		}
+
+		for (int r = 0; r < n; r++)
+		{
+			if (r == i) continue;
+
+			k = A[r*n+i];
+			for (int c = 0; c < n; c++)
+			{
+				A[r*n+c] -= k*A[i*n+c];
+				B[r*n+c] -= k*B[i*n+c];
+			}
+		}
+	}
+}
+
 void eigen(double *A, int n, double *val, double *vec)
 {
 	int CONVERGENCE_LIMIT = 50;
 
-	for (int r = 0; r < n; r++)
-		for (int c = 0; c < n; c++)
-			vec[n*r+c] = (r == c) ? 1. : 0.;
+	identity(vec, n);
 
 	double *temp_val = (double*) malloc(n*sizeof(double));
 	double *dval = (double*) malloc(n*sizeof(double));
@@ -178,14 +222,14 @@ void eigen(double *A, int n, double *val, double *vec)
 					val[c] += t*A[r*n+c];
 
 					A[r*n+c] = 0.;
-					for (int j = 0; j < r-1; j++)
+					for (int j = 0; j < r; j++)
 					{
 						double temp1 = A[j*n+r];
 						double temp2 = A[j*n+c];
 						A[j*n+r] = temp1 - sinrot*(temp2+temp1*tau);
 						A[j*n+c] = temp2 + sinrot*(temp1-temp2*tau);
 					}
-					for (int j = r+1; j < c-1; j++)
+					for (int j = r+1; j < c; j++)
 					{
 						double temp1 = A[r*n+j];
 						double temp2 = A[j*n+c];
@@ -218,10 +262,46 @@ void eigen(double *A, int n, double *val, double *vec)
 		}
 	}
 
+	free(temp_val);
+	free(dval);
 	printf("Eigen calculations exceeded convergence limit.\n");
 }
 
-void eigenvalues(double *A, int n, double *val)
-{
 
+void eigen_complex(double *Ar, double *Ai, int n, double *val,
+		double *vecr, double *veci)
+{
+	int N = 2*n;
+	double *A = (double*) malloc(N*N*sizeof(double));
+	for (int r = 0; r < n; r++)
+	{
+		for (int c = 0; c < n; c++)
+		{
+			A[r*N+c] = Ar[r*n+c];
+			A[(n+r)*N+c+n] = Ar[r*n+c];
+			A[r*N+c+n] = -Ai[r*n+c];
+			A[(n+r)*N+c] = Ai[r*n+c];
+		}
+	}
+
+	double *A_val = (double*) malloc(N*sizeof(double));
+	double *A_vec = (double*) malloc(N*N*sizeof(double));
+	eigen(A, N, A_val, A_vec);
+	free(A);
+
+	for (int i = 0; i < n; i++)
+		val[i] = A_val[i];
+	for (int r = 0; r < n; r++)
+	{
+		for (int c = 0; c < n; c++)
+		{
+			vecr[r*n+c] = A_vec[r*N+c];
+			veci[r*n+c] = A_vec[(n+r)*N+c];
+		}
+	}
+	free(A_val);
+	free(A_vec);
 }
+
+
+

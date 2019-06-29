@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <float.h>
 #include "music.h"
 #include "matrix.h"
 #include "config.h"
@@ -70,18 +71,18 @@ void music(double *tdoa)
 	double *Ai = (double*) malloc(M*sizeof(double));
 	double *Sr = (double*) malloc(N*sizeof(double));
 	double *Si = (double*) malloc(N*sizeof(double));
-	for (int r = 0; r < M; r++)
+	for (int i = 0; i < M; i++)
 	{
-		double angle = 2.*M_PI*tdoa[r];
-		Ar[r] = cos(angle);
-		Ai[r] = sin(angle);
+		double angle = 2.*M_PI*tdoa[i];
+		Ar[i] = cos(angle);
+		Ai[i] = sin(angle);
 	}
 	// print_complex(Ar, Ai, M, 1, "\nA: ");
-	for (int r = 1; r <= N; r++)
+	for (int i = 0; i < N; i++)
 	{	
-		double angle = 2.*M_PI*F0*r;
-		Sr[r-1] = cos(angle);
-		Si[r-1] = sin(angle);
+		double angle = 2.*M_PI*F0*i;
+		Sr[i] = cos(angle);
+		Si[i] = sin(angle);
 	}
 	// print_complex(Sr, Si, 1, N, "\nS: ");
 	product_complex(Ar, Ai, Sr, Si, M, 1, N, Xr, Xi);	
@@ -103,6 +104,90 @@ void music(double *tdoa)
 	free(Xr);
 	free(Xi); 
 	print_complex(Rr, Ri, M, M, "\nCovariance Matrix: ");
+
+	double *Eval = (double*) malloc(M*sizeof(double));
+	double *Evecr = (double*) malloc(M*M*sizeof(double));
+	double *Eveci = (double*) malloc(M*M*sizeof(double));
+	eigen_complex(Rr, Ri, M, Eval, Evecr, Eveci);
+	print(Eval, M, 1, "\nEigenvalues: ");
+	print_complex(Evecr, Eveci, M, M, "\nEigenvectors: ");
+	free(Rr);
+	free(Ri);
+	free(Eval);
+
+	double *NSr = (double*) malloc(M*(M-1)*sizeof(double));
+	double *NSi = (double*) malloc(M*(M-1)*sizeof(double));
+	double *NSTr = (double*) malloc((M-1)*M*sizeof(double));
+	double *NSTi = (double*) malloc((M-1)*M*sizeof(double));
+	slice(Evecr, M, 0, M, 0, M-1, NSr);
+	slice(Eveci, M, 0, M, 0, M-1, NSi);
+	transpose_complex(NSr, NSi, M, M-1, NSTr, NSTi);
+	free(Evecr);
+	free(Eveci);
+	print_complex(NSr, NSi, M, M-1, "\nNoise Subspace: ");
+
+	int n = 180./SEARCH_INTERVAL+1;
+	double theta = -90.;
+	double *Y = (double*) malloc(n*sizeof(double));
+	for (int i = 0; i < n; i++)
+	{
+		double *SSr = (double*) malloc(M*sizeof(double));
+		double *SSi = (double*) malloc(M*sizeof(double));
+		for (int j = 0; j < M; j++)
+		{
+			SSr[j] = cos(2.*M_PI*SPACING*sin(theta*M_PI/180.)*F0/C*j);
+			SSi[j] = sin(2.*M_PI*SPACING*sin(theta*M_PI/180.)*F0/C*j);
+		}
+		double *SSTr = (double*) malloc(M*sizeof(double));
+		double *SSTi = (double*) malloc(M*sizeof(double));
+		transpose_complex(SSr, SSi, 1, M, SSTr, SSTi);
+		
+		double *temp1r = (double*) malloc((M-1)*sizeof(double));
+		double *temp1i = (double*) malloc((M-1)*sizeof(double));
+		product_complex(SSr, SSi, NSr, NSi, 1, M, M-1, temp1r, temp1i);
+		double *temp2r = (double*) malloc(M*sizeof(double));
+		double *temp2i = (double*) malloc(M*sizeof(double));
+		product_complex(temp1r, temp1i, NSTr, NSTi, 1, M-1, M, temp2r, temp2i);
+		double *temp3r = (double*) malloc(1*sizeof(double));
+		double *temp3i = (double*) malloc(1*sizeof(double));
+		product_complex(temp2r, temp2i, SSTr, SSTi, 1, M, 1, temp3r, temp3i);
+		Y[i] = fabs(1./temp3r[0]);
+		free(SSr);
+		free(SSi);
+		free(SSTr);
+		free(SSTi);
+		free(temp1r);
+		free(temp1i);
+		free(temp2r);
+		free(temp2i);
+		free(temp3r);
+		free(temp3i);
+		
+		theta += SEARCH_INTERVAL;
+	}
+	free(NSr);
+	free(NSi);
+	free(NSTr);
+	free(NSTi);
+
+	double max = 0.;
+	for (int i = 0; i < n; i++)
+		max = (Y[i] > max) ? Y[i] : max;
+	for (int i = 0; i < n; i++)
+		Y[i] = 10.*log10(Y[i]/max);
+
+	max = -DBL_MAX;
+	int max_idx = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (Y[i] > max)
+		{
+			max = Y[i];
+			max_idx = i;
+		}
+	}
+	double angle = -90.+max_idx*SEARCH_INTERVAL;
+	printf("\nDOA: %f\n", angle);
 }
 
 
