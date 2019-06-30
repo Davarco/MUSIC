@@ -2,7 +2,7 @@
  * 	@brief Functions used for real and complex matrix operations.
  *
  *	@author David Zhang (Davarco)
- *	@bugs  
+ *	@bugs No known bugs.
  */
 #include <stdio.h>
 #include <math.h>

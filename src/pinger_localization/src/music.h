@@ -31,6 +31,7 @@ void tdoa(double *ps, double *tdoa);
  *
  *	@param tdoa The M TDOAs (periods).
  *	@param angle The address where the DOA (degrees) will be written.
+ *	@return Void.
  */
 void music(double *tdoa, double *angle);
 
