@@ -20,12 +20,14 @@ int main()
 {
 	// while (true) 
 	{
+		/*
+		 * 2 1
+		 * 4 3
+		 */
 		printf("Calculating DOA (direction-of-arrival) using MUSIC.\n");
 		double ps[N_PHN];
 		dft(ps);
-		printf("\nPhase Shifts (radians): %f %f %f %f\n", 
-				ps[0], ps[1], ps[2], ps[3]);
-		printf("\nPhase Shifts (degrees): %f %f %f %f\n", 
+		printf("\nPhase Shifts (degrees):\n%f %f %f %f\n", 
 				ps[0]*180./M_PI, ps[1]*180./M_PI, 
 				ps[2]*180./M_PI, ps[3]*180./M_PI);
 
@@ -34,9 +36,18 @@ int main()
 		tdoa(ps1, tdoa1);
 		print(tdoa1, 1, M, "\nTDOA for NE/NW: ");
 
-		double doa;
-		music(tdoa1, &doa);
-		printf("\nDOA for NE/NW: %f\n", doa);
+		double doa1;
+		music(tdoa1, &doa1);
+		printf("\nDOA for NE/NW: %f\n", doa1);
+		
+		double ps2[M] = { ps[2], ps[3] };
+		double tdoa2[M];
+		tdoa(ps2, tdoa2);
+		print(tdoa2, 1, M, "\nTDOA for SE/SW: ");
+
+		double doa2;
+		music(tdoa2, &doa2);
+		printf("\nDOA for SE/SW: %f\n", doa2);
 	}
 
 	return 0;

@@ -55,4 +55,9 @@ const int N = 16;
  */
 const int M = 2;
 
+/*
+ * Log option.
+ */
+const int DEBUG = 1;
+
 #endif 

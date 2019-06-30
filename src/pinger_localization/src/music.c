@@ -117,7 +117,7 @@ void music(double *tdoa, double *angle)
 	free(XTi);
 	free(Xr);
 	free(Xi); 
-	print_complex(Rr, Ri, M, M, "\nCovariance Matrix: ");
+	if (DEBUG) print_complex(Rr, Ri, M, M, "\nCovariance Matrix: ");
 
 	// If the elements along the main diagonal are not exactly equal, the
 	// program will compute the wrong eigenvectors and fail. 
@@ -138,8 +138,8 @@ void music(double *tdoa, double *angle)
 	double *Evecr = (double*) malloc(M*M*sizeof(double));
 	double *Eveci = (double*) malloc(M*M*sizeof(double));
 	eigen_complex(Rr, Ri, M, Eval, Evecr, Eveci);
-	print(Eval, M, 1, "\nEigenvalues: ");
-	print_complex(Evecr, Eveci, M, M, "\nEigenvectors: ");
+	if (DEBUG) print(Eval, M, 1, "\nEigenvalues: ");
+	if (DEBUG) print_complex(Evecr, Eveci, M, M, "\nEigenvectors: ");
 	free(Rr);
 	free(Ri);
 	free(Eval);
@@ -154,7 +154,7 @@ void music(double *tdoa, double *angle)
 	transpose_complex(NSr, NSi, M, M-1, NSTr, NSTi);
 	free(Evecr);
 	free(Eveci);
-	print_complex(NSr, NSi, M, M-1, "\nNoise Subspace: ");
+	if (DEBUG) print_complex(NSr, NSi, M, M-1, "\nNoise Subspace: ");
 
 	// Iterate over possible DOAs.
 	int n = 180./SEARCH_INTERVAL+1;

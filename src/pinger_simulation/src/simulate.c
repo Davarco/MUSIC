@@ -29,8 +29,8 @@ int main()
 	double OFFSET[NUM_PHONES][2] = {
 		{  SPACING/2.,  SPACING/2. },
 		{  SPACING/2., -SPACING/2. },
-		{ -SPACING/2., -SPACING/2. },
-		{ -SPACING/2.,  SPACING/2. }
+		{ -SPACING/2.,  SPACING/2. },
+		{ -SPACING/2., -SPACING/2. }
 	};
 
 	// Find distances to pinger and theoretical phase shifts.

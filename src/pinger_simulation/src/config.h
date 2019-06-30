@@ -42,8 +42,8 @@
  * TIME_BETWEEN_PINGS = amount of time pinger is silent per burst (seconds).
  * PING_DURATION = length of ping burst (seconds).
  */
-#define PINGER_X_LOC 16.
-#define PINGER_Y_LOC 4.
+#define PINGER_X_LOC 7.
+#define PINGER_Y_LOC 3.
 #define F0 25000.
 #define T0 1./F0
 #define NOISE 0.0
