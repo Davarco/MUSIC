@@ -30,7 +30,9 @@ int main()
 		tdoa(ps1, tdoa1);
 		print(tdoa1, 1, M, "\nTDOA for NE/NW: ");
 
-		music(tdoa1);
+		double doa;
+		music(tdoa1, &doa);
+		printf("\nDOA for NE/NW: %f\n", doa);
 	}
 
 	return 0;

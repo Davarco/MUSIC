@@ -1,9 +1,8 @@
-/*
- * @file music.c
- * @brief Functions used to compute DOA (direction-of-arrival) using MUSIC.
+/**	@file music.c
+ *	@brief Functions used to compute DOA (direction-of-arrival) using MUSIC.
  *
- * @author David Zhang (Davarco)
- * @bug No known bugs.
+ *	@author David Zhang (Davarco)
+ *	@bug No known bugs.
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,16 +15,20 @@
 
 void dft(double *ps)
 {
+	// Open named pipe to receive data from pigner simulator.
 	FILE *in = fopen("datapipe", "r");
-	FILE *out = fopen("data.txt", "w");
 
-	double real[N_PHN], imag[N_PHN], tdoa[N_PHN];
+	// Write data to file so it can be plotted.
+	FILE *out = fopen("signal.txt", "w");
+
+	// Compute real and imaginary components of the DFT.
+	// TODO Add DFT explanation.
+	double real[N_PHN], imag[N_PHN];
 	for (int i = 0; i < N_PHN; i++)
 	{
 		real[i] = 0.0;
 		imag[i] = 0.0;
 		ps[i] = 0.0;
-		tdoa[i] = 0.0;
 	}
 	for (int n = 0; n < N_DFT; n++)
 	{
@@ -35,7 +38,7 @@ void dft(double *ps)
 				&phones[0], &phones[1], &phones[2], &phones[3]);
 		fprintf(out, "%f,%f,%f,%f,%f\n", t, 
 				phones[0], phones[1], phones[2], phones[3]);
-		// if (n == 0) printf("\ntime: %f\n", t);
+		// if (n == 0) printf("\nTime: %f\n", t);
 
 		double angle = 2*M_PI*n*F0/FS;
 		for (int h = 0; h < N_PHN; h++)
@@ -45,26 +48,36 @@ void dft(double *ps)
 		}
 	}
 
+	// Compute phase shift from real and imaginary components. Since atan only
+	// handles 180 degrees, we need to manually find out which quadrant it is
+	// in. The extra M_PI/2 isn't necessary, but it makes the phase shifts match
+	// the ones computed in the simulator.
 	for (int h = 0; h < N_PHN; h++)
 	{
 		ps[h] = atan(imag[h]/real[h]);
 		ps[h] = (real[h] > 0) ? ps[h]+M_PI/2. : ps[h]+3.*M_PI/2.;
-		tdoa[h] = ps[h]/2./M_PI/F0;
-		// printf("Component %i: real=%0.06f imag=%0.06f\n", h+1, real[h], imag[h]);
 	}
 
+	// Clean up opened files.
 	fclose(in);
 	fclose(out);
 }
 
 void tdoa(double *ps, double *tdoa)
 {
+	// Compute the difference between the phase shifts and convert to periods,
+	// NOT seconds, like usual TDOA.
 	for (int i = 0; i < M; i++) 
 		tdoa[i] = (ps[i]-ps[0])/2./M_PI;
 }
 
-void music(double *tdoa)
+void music(double *tdoa, double *angle)
 {
+	// Compute the signal model, X = A*S. "X" represents the total signal, "A"
+	// is TDOA, and "S" is the source signal. I think that the source signal is
+	// supoosed to be the raw readings (e.g. from pinger_simulation), but since
+	// the RoboSub competition gives the pinger frequency beforehand, I can just
+	// simulate the signal again to avoid signal noise.
 	double *Xr = (double*) malloc(M*N*sizeof(double));
 	double *Xi = (double*) malloc(M*N*sizeof(double));
 	double *Ar = (double*) malloc(M*sizeof(double));
@@ -92,6 +105,7 @@ void music(double *tdoa)
 	free(Sr); 
 	free(Si);
 
+	// Compute the covariance matrix.  
 	double *XTr = (double*) malloc(N*M*sizeof(double));
 	double *XTi = (double*) malloc(N*M*sizeof(double));
 	double *Rr = (double*) malloc(M*M*sizeof(double));
@@ -105,6 +119,21 @@ void music(double *tdoa)
 	free(Xi); 
 	print_complex(Rr, Ri, M, M, "\nCovariance Matrix: ");
 
+	// If the elements along the main diagonal are not exactly equal, the
+	// program will compute the wrong eigenvectors and fail. 
+	for (int i = 1; i < M; i++)
+	{
+		if (Rr[i*M+1] != Rr[0])
+		{
+			printf("\nError encountered. Elements along the main diagonal are "
+			       "not equal, which could cause the program to crash. "
+				   "Attemping manual fix now.\n");
+			Rr[i*M+1] = Rr[0];
+		}
+	}
+
+	// Compute the signal correlation matrix, or the eigenvectors of the
+	// covariance matrix.
 	double *Eval = (double*) malloc(M*sizeof(double));
 	double *Evecr = (double*) malloc(M*M*sizeof(double));
 	double *Eveci = (double*) malloc(M*M*sizeof(double));
@@ -115,6 +144,7 @@ void music(double *tdoa)
 	free(Ri);
 	free(Eval);
 
+	// Slice the matrix to obtain the noise subspace of the correlation matrix.
 	double *NSr = (double*) malloc(M*(M-1)*sizeof(double));
 	double *NSi = (double*) malloc(M*(M-1)*sizeof(double));
 	double *NSTr = (double*) malloc((M-1)*M*sizeof(double));
@@ -126,6 +156,7 @@ void music(double *tdoa)
 	free(Eveci);
 	print_complex(NSr, NSi, M, M-1, "\nNoise Subspace: ");
 
+	// Iterate over possible DOAs.
 	int n = 180./SEARCH_INTERVAL+1;
 	double theta = -90.;
 	double *Y = (double*) malloc(n*sizeof(double));
@@ -170,12 +201,19 @@ void music(double *tdoa)
 	free(NSTr);
 	free(NSTi);
 
-	double max = 0.;
+	// Convert to dB so it is readable and plottable.
+	FILE *out = fopen("doa.txt", "w");
+	double max = -DBL_MAX;
 	for (int i = 0; i < n; i++)
 		max = (Y[i] > max) ? Y[i] : max;
 	for (int i = 0; i < n; i++)
+	{
 		Y[i] = 10.*log10(Y[i]/max);
+		fprintf(out, "%f,%f\n", -90+i*SEARCH_INTERVAL, Y[i]);
+	}
+	fclose(out);
 
+	// Search for loudest angle to find DOA.
 	max = -DBL_MAX;
 	int max_idx = 0;
 	for (int i = 0; i < n; i++)
@@ -186,8 +224,11 @@ void music(double *tdoa)
 			max_idx = i;
 		}
 	}
-	double angle = -90.+max_idx*SEARCH_INTERVAL;
-	printf("\nDOA: %f\n", angle);
+	free(Y);
+
+	// Write largest angle to initial address.
+	double doa = -90.+max_idx*SEARCH_INTERVAL;
+	*angle = doa;
 }
 
 
