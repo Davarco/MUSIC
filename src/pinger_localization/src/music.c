@@ -1,8 +1,8 @@
-/**	@file music.c
- *	@brief Functions used to compute DOA (direction-of-arrival) using MUSIC.
+/** @file music.c
+ *  @brief Functions used to compute DOA (direction-of-arrival) using MUSIC.
  *
- *	@author David Zhang (Davarco)
- *	@bug No known bugs.
+ *  @author David Zhang (Davarco)
+ *  @bug No known bugs.
  */
 #include <stdio.h>
 #include <stdlib.h>

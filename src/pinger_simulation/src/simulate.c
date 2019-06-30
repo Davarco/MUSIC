@@ -13,11 +13,11 @@
 double randn(double, double);
 
 /** @brief Simulator start.
- * 
+ *
  *  This code simulates sampling a pinger by computing the theoretical phase
  *  shifts of each hydrophone, while adding noise to the measurements. It sends
  *  the data over a named pipe for the localization system to read.
- * 
+ *
  *  @return Should not return.
  */
 int main()
