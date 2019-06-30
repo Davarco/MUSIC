@@ -1,8 +1,8 @@
-/**	@file main.c
- * 	@brief Runs MUSIC for an acoustic localization system.
+/** @file main.c
+ *  @brief Runs MUSIC for an acoustic localization system.
  * 	
- * 	@author David Zhang (Davarco)
- * 	@bugs No known bugs.
+ *  @author David Zhang (Davarco)
+ *  @bugs No known bugs.
  */
 #include <stdio.h>
 #include <stdlib.h>

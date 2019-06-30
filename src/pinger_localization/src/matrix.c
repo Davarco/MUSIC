@@ -1,8 +1,7 @@
-/**	@file matrix.c
- * 	@brief Functions used for real and complex matrix operations.
+/** @file matrix.c
+ *  @brief Functions used for real and complex matrix operations.
  *
- *	@author David Zhang (Davarco)
- *	@bugs No known bugs.
+ *  @author David Zhang (Davarco)
  */
 #include <stdio.h>
 #include <math.h>

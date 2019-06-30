@@ -1,8 +1,8 @@
 /** @file simulate.c
- * 	@brief Simulates sampling a pinger in an underwater environment.
+ *  @brief Simulates sampling a pinger in an underwater environment.
  *
- * 	@author David Zhang (davarco)
- * 	@bug No known bugs.
+ *  @author David Zhang (davarco)
+ *  @bug No known bugs.
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,12 +13,12 @@
 double randn(double, double);
 
 /** @brief Simulator start.
- * 	
- * 	This code simulates sampling a pinger by computing the theoretical phase
- * 	shifts of each hydrophone, while adding noise to the measurements. It sends
- * 	the data over a named pipe for the localization system to read.
- * 	
- * 	@return Should not return.
+ * 
+ *  This code simulates sampling a pinger by computing the theoretical phase
+ *  shifts of each hydrophone, while adding noise to the measurements. It sends
+ *  the data over a named pipe for the localization system to read.
+ * 
+ *  @return Should not return.
  */
 int main()
 {

@@ -1,8 +1,8 @@
-/**	@file config.h
- *	@brief Constants to simulate a pinger, its environment, and sampling.
+/** @file config.h
+ *  @brief Constants to simulate a pinger, its environment, and sampling.
  *
- *	@author David Zhang (Davarco)
- *	@bugs No known bugs.
+ *  @author David Zhang (Davarco)
+ *  @bugs No known bugs.
  */
 #ifndef CONFIG_HPP 
 #define CONFIG_HPP 
