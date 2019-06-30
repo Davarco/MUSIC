@@ -1,0 +1,106 @@
+\hypertarget{music_8c}{}\section{src/pinger\+\_\+localization/src/music.c File Reference}
+\label{music_8c}\index{src/pinger\+\_\+localization/src/music.\+c@{src/pinger\+\_\+localization/src/music.\+c}}
+
+
+Functions used to compute D\+OA (direction-\/of-\/arrival) using M\+U\+S\+IC.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$float.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}music.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}matrix.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\newline
+Include dependency graph for music.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{music_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{music_8c_a046b73e9823c16ba6a3c7f5469d82cad}{dft} (double $\ast$ps)
+\begin{DoxyCompactList}\small\item\em Computes a D\+FT at the pinger frequency for phase shifts. \end{DoxyCompactList}\item 
+void \hyperlink{music_8c_a6aeb3e94a67f90f5a2cdd4f83a0ee7cb}{tdoa} (double $\ast$ps, double $\ast$tdoa)
+\begin{DoxyCompactList}\small\item\em Computes the T\+D\+OA (time difference of arrival) between phase shifts. \end{DoxyCompactList}\item 
+void \hyperlink{music_8c_ac7969308bd0fb9d760e3b38653439df2}{music} (double $\ast$\hyperlink{music_8h_a6aeb3e94a67f90f5a2cdd4f83a0ee7cb}{tdoa}, double $\ast$angle)
+\begin{DoxyCompactList}\small\item\em Computes the D\+OA (direction of arrival) using T\+D\+O\+As. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Functions used to compute D\+OA (direction-\/of-\/arrival) using M\+U\+S\+IC. 
+
+\begin{DoxyAuthor}{Author}
+David Zhang (Davarco) 
+\end{DoxyAuthor}
+\begin{DoxyRefDesc}{Bug}
+\item[\hyperlink{bug__bug000001}{Bug}]No known bugs. \end{DoxyRefDesc}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{music_8c_a046b73e9823c16ba6a3c7f5469d82cad}\label{music_8c_a046b73e9823c16ba6a3c7f5469d82cad}} 
+\index{music.\+c@{music.\+c}!dft@{dft}}
+\index{dft@{dft}!music.\+c@{music.\+c}}
+\subsubsection{\texorpdfstring{dft()}{dft()}}
+{\footnotesize\ttfamily void dft (\begin{DoxyParamCaption}\item[{double $\ast$}]{ps }\end{DoxyParamCaption})}
+
+
+
+Computes a D\+FT at the pinger frequency for phase shifts. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ps} & The address where the M phase shifts (radians) will be written. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{music_8c_ac7969308bd0fb9d760e3b38653439df2}\label{music_8c_ac7969308bd0fb9d760e3b38653439df2}} 
+\index{music.\+c@{music.\+c}!music@{music}}
+\index{music@{music}!music.\+c@{music.\+c}}
+\subsubsection{\texorpdfstring{music()}{music()}}
+{\footnotesize\ttfamily void music (\begin{DoxyParamCaption}\item[{double $\ast$}]{tdoa,  }\item[{double $\ast$}]{angle }\end{DoxyParamCaption})}
+
+
+
+Computes the D\+OA (direction of arrival) using T\+D\+O\+As. 
+
+M\+U\+S\+IC is limited to a \mbox{[}-\/90, 90\mbox{]} degree window. 0 is north, or X.
+
+
+\begin{DoxyParams}{Parameters}
+{\em tdoa} & The M T\+D\+O\+As (periods). \\
+\hline
+{\em angle} & The address where the D\+OA (degrees) will be written. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{music_8c_a6aeb3e94a67f90f5a2cdd4f83a0ee7cb}\label{music_8c_a6aeb3e94a67f90f5a2cdd4f83a0ee7cb}} 
+\index{music.\+c@{music.\+c}!tdoa@{tdoa}}
+\index{tdoa@{tdoa}!music.\+c@{music.\+c}}
+\subsubsection{\texorpdfstring{tdoa()}{tdoa()}}
+{\footnotesize\ttfamily void tdoa (\begin{DoxyParamCaption}\item[{double $\ast$}]{ps,  }\item[{double $\ast$}]{tdoa }\end{DoxyParamCaption})}
+
+
+
+Computes the T\+D\+OA (time difference of arrival) between phase shifts. 
+
+The first T\+D\+OA value should be 0, as all the T\+D\+O\+As are calculated relative to the first phase shift.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ps} & The M phase shifts (radians). \\
+\hline
+{\em tdoa} & The address where the M T\+D\+O\+As (periods) will be written. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void. 
+\end{DoxyReturn}

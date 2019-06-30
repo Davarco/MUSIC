@@ -1,0 +1,462 @@
+\hypertarget{matrix_8h}{}\section{src/pinger\+\_\+localization/src/matrix.h File Reference}
+\label{matrix_8h}\index{src/pinger\+\_\+localization/src/matrix.\+h@{src/pinger\+\_\+localization/src/matrix.\+h}}
+
+
+Function declarations for real and complex matrix operations.  
+
+
+{\ttfamily \#include $<$string$>$}\newline
+Include dependency graph for matrix.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{matrix_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{matrix_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{matrix_8h_a81c96d873cc9c72c183277f3318b9488}{print} (double $\ast$A, int m, int n, char $\ast$msg)
+\begin{DoxyCompactList}\small\item\em Print real matrix to terminal. \end{DoxyCompactList}\item 
+void \hyperlink{matrix_8h_a078e23ec05fcd85756bc7f635cdc530d}{print\+\_\+complex} (double $\ast$Ar, double $\ast$Ai, int m, int n, char $\ast$msg)
+\begin{DoxyCompactList}\small\item\em Print complex matrix to terminal. \end{DoxyCompactList}\item 
+void \hyperlink{matrix_8h_a0c767e9d2827cc3ac53da5272dfab3ca}{identity} (double $\ast$A, int n)
+\begin{DoxyCompactList}\small\item\em Create an identity matrix of order nxn. \end{DoxyCompactList}\item 
+void \hyperlink{matrix_8h_a347b1b98c0fa015d4d588fcee0332043}{copy} (double $\ast$A, int m, int n, double $\ast$B)
+\begin{DoxyCompactList}\small\item\em Copies the elements from one matrix to another. \end{DoxyCompactList}\item 
+void \hyperlink{matrix_8h_acbe5a7b7148849089ee154afefe99898}{product} (double $\ast$A, double $\ast$B, int m, int p, int n, double $\ast$C)
+\begin{DoxyCompactList}\small\item\em Multiplies two matrices together. \end{DoxyCompactList}\item 
+void \hyperlink{matrix_8h_a0c46c37f20473cbb1f1f2e3c82519e65}{product\+\_\+complex} (double $\ast$Ar, double $\ast$Ai, double $\ast$Br, double $\ast$Bi, int m, int p, int n, double $\ast$Cr, double $\ast$Ci)
+\begin{DoxyCompactList}\small\item\em Multiplies two complex matrices together. \end{DoxyCompactList}\item 
+void \hyperlink{matrix_8h_adb13c652887fd0e887c88d53d9f4b323}{add} (double $\ast$A, double $\ast$B, int m, int n, double $\ast$C)
+\begin{DoxyCompactList}\small\item\em Adds two matrices together. \end{DoxyCompactList}\item 
+void \hyperlink{matrix_8h_ab67f48f8dfa82239b1f5dfd90aad2c1d}{subtract} (double $\ast$A, double $\ast$B, int m, int n, double $\ast$C)
+\begin{DoxyCompactList}\small\item\em Subtracts two matrices. \end{DoxyCompactList}\item 
+void \hyperlink{matrix_8h_a296d2426aeb7a46d455ce46f47d97eb9}{transpose} (double $\ast$A, int m, int n, double $\ast$B)
+\begin{DoxyCompactList}\small\item\em Takes the transpose of a matrix. \end{DoxyCompactList}\item 
+void \hyperlink{matrix_8h_af968034cbd25008e068ad06c1daa5cfe}{transpose\+\_\+complex} (double $\ast$Ar, double $\ast$Ai, int m, int n, double $\ast$Br, double $\ast$Bi)
+\begin{DoxyCompactList}\small\item\em Takes the transpose (complex conjugate) of a complex matrix. \end{DoxyCompactList}\item 
+void \hyperlink{matrix_8h_a320be7f5a43b1820a83eca703ffe5897}{scale} (double $\ast$A, int m, int n, double k)
+\begin{DoxyCompactList}\small\item\em Multiplies a matrix by a scalar. \end{DoxyCompactList}\item 
+void \hyperlink{matrix_8h_a4a7fcecfbdb3cf01665981c858dd5984}{slice} (double $\ast$A, int n, int m1, int m2, int n1, int n2, double $\ast$B)
+\begin{DoxyCompactList}\small\item\em Slices a matrix. \end{DoxyCompactList}\item 
+void \hyperlink{matrix_8h_ad58cbef9da2956cfcb53e1e9f361b61f}{inverse} (double $\ast$A, int n, double $\ast$B)
+\begin{DoxyCompactList}\small\item\em Takes the inverse of a matrix. \end{DoxyCompactList}\item 
+void \hyperlink{matrix_8h_a74c8fe363560854e31ccc3862fa00e8b}{eigen} (double $\ast$A, int n, double $\ast$val, double $\ast$vec)
+\begin{DoxyCompactList}\small\item\em Takes the eigenvalues and eigenvectors of a real matrix. \end{DoxyCompactList}\item 
+void \hyperlink{matrix_8h_ab429c38bf9e0188c44427627e1f692f0}{eigen\+\_\+complex} (double $\ast$Ar, double $\ast$Ai, int n, double $\ast$val, double $\ast$vecr, double $\ast$veci)
+\begin{DoxyCompactList}\small\item\em Takes the eigenvalues and eigenvectors of a complex matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Function declarations for real and complex matrix operations. 
+
+Matrices are stored in 1-\/D arrays. To access a cell, use \mbox{[}r$\ast$n+c\mbox{]} instead of \mbox{[}r\mbox{]}\mbox{[}c\mbox{]}.
+
+Most of the other parts don\textquotesingle{}t require explanation, except for how complex matrices are handled. To create a complex matrix of order MxN, create two matrices of the same order. Use the first matrix to hold real components and the other to hold imaginary components.
+
+\begin{DoxyAuthor}{Author}
+David Zhang (Davarco) 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{matrix_8h_adb13c652887fd0e887c88d53d9f4b323}\label{matrix_8h_adb13c652887fd0e887c88d53d9f4b323}} 
+\index{matrix.\+h@{matrix.\+h}!add@{add}}
+\index{add@{add}!matrix.\+h@{matrix.\+h}}
+\subsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily void add (\begin{DoxyParamCaption}\item[{double $\ast$}]{A,  }\item[{double $\ast$}]{B,  }\item[{int}]{m,  }\item[{int}]{n,  }\item[{double $\ast$}]{C }\end{DoxyParamCaption})}
+
+
+
+Adds two matrices together. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & The first matrix. \\
+\hline
+{\em B} & The second matrix. \\
+\hline
+{\em m} & The number of rows in A and B. \\
+\hline
+{\em n} & The number of columns in A and B. \\
+\hline
+{\em C} & The added matrix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{matrix_8h_a347b1b98c0fa015d4d588fcee0332043}\label{matrix_8h_a347b1b98c0fa015d4d588fcee0332043}} 
+\index{matrix.\+h@{matrix.\+h}!copy@{copy}}
+\index{copy@{copy}!matrix.\+h@{matrix.\+h}}
+\subsubsection{\texorpdfstring{copy()}{copy()}}
+{\footnotesize\ttfamily void copy (\begin{DoxyParamCaption}\item[{double $\ast$}]{A,  }\item[{int}]{m,  }\item[{int}]{n,  }\item[{double $\ast$}]{B }\end{DoxyParamCaption})}
+
+
+
+Copies the elements from one matrix to another. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & The matrix from where elements are copied from. \\
+\hline
+{\em m} & The number of rows in A and B. \\
+\hline
+{\em n} & The number of columns in A and B. \\
+\hline
+{\em B} & The matrix where elements are written to. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{matrix_8h_a74c8fe363560854e31ccc3862fa00e8b}\label{matrix_8h_a74c8fe363560854e31ccc3862fa00e8b}} 
+\index{matrix.\+h@{matrix.\+h}!eigen@{eigen}}
+\index{eigen@{eigen}!matrix.\+h@{matrix.\+h}}
+\subsubsection{\texorpdfstring{eigen()}{eigen()}}
+{\footnotesize\ttfamily void eigen (\begin{DoxyParamCaption}\item[{double $\ast$}]{A,  }\item[{int}]{n,  }\item[{double $\ast$}]{val,  }\item[{double $\ast$}]{vec }\end{DoxyParamCaption})}
+
+
+
+Takes the eigenvalues and eigenvectors of a real matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & The input matrix, must be square. \\
+\hline
+{\em n} & The number of rows and columns in A. \\
+\hline
+{\em val} & The address where the eigenvalues are stored. \\
+\hline
+{\em vec} & The address where the eigenvectors are stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{matrix_8h_ab429c38bf9e0188c44427627e1f692f0}\label{matrix_8h_ab429c38bf9e0188c44427627e1f692f0}} 
+\index{matrix.\+h@{matrix.\+h}!eigen\+\_\+complex@{eigen\+\_\+complex}}
+\index{eigen\+\_\+complex@{eigen\+\_\+complex}!matrix.\+h@{matrix.\+h}}
+\subsubsection{\texorpdfstring{eigen\+\_\+complex()}{eigen\_complex()}}
+{\footnotesize\ttfamily void eigen\+\_\+complex (\begin{DoxyParamCaption}\item[{double $\ast$}]{Ar,  }\item[{double $\ast$}]{Ai,  }\item[{int}]{n,  }\item[{double $\ast$}]{val,  }\item[{double $\ast$}]{vecr,  }\item[{double $\ast$}]{veci }\end{DoxyParamCaption})}
+
+
+
+Takes the eigenvalues and eigenvectors of a complex matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ar} & The real components of the input matrix. \\
+\hline
+{\em Ai} & The imaginary components of the input matrix. \\
+\hline
+{\em n} & The number of rows and columns in A. \\
+\hline
+{\em val} & The address where the eigenvalues are stored. \\
+\hline
+{\em vecr} & The address for the real components of the eigenvectors. \\
+\hline
+{\em veci} & The address for the imaginary components of the eigenvectors. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{matrix_8h_a0c767e9d2827cc3ac53da5272dfab3ca}\label{matrix_8h_a0c767e9d2827cc3ac53da5272dfab3ca}} 
+\index{matrix.\+h@{matrix.\+h}!identity@{identity}}
+\index{identity@{identity}!matrix.\+h@{matrix.\+h}}
+\subsubsection{\texorpdfstring{identity()}{identity()}}
+{\footnotesize\ttfamily void identity (\begin{DoxyParamCaption}\item[{double $\ast$}]{A,  }\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Create an identity matrix of order nxn. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & The address where the matrix is written. \\
+\hline
+{\em n} & The number of rows and columns of A. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{matrix_8h_ad58cbef9da2956cfcb53e1e9f361b61f}\label{matrix_8h_ad58cbef9da2956cfcb53e1e9f361b61f}} 
+\index{matrix.\+h@{matrix.\+h}!inverse@{inverse}}
+\index{inverse@{inverse}!matrix.\+h@{matrix.\+h}}
+\subsubsection{\texorpdfstring{inverse()}{inverse()}}
+{\footnotesize\ttfamily void inverse (\begin{DoxyParamCaption}\item[{double $\ast$}]{A,  }\item[{int}]{n,  }\item[{double $\ast$}]{B }\end{DoxyParamCaption})}
+
+
+
+Takes the inverse of a matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & The input matrix, must be square. \\
+\hline
+{\em n} & The number of rows and columns in A. \\
+\hline
+{\em B} & The inverted matrix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{matrix_8h_a81c96d873cc9c72c183277f3318b9488}\label{matrix_8h_a81c96d873cc9c72c183277f3318b9488}} 
+\index{matrix.\+h@{matrix.\+h}!print@{print}}
+\index{print@{print}!matrix.\+h@{matrix.\+h}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void print (\begin{DoxyParamCaption}\item[{double $\ast$}]{A,  }\item[{int}]{m,  }\item[{int}]{n,  }\item[{char $\ast$}]{msg }\end{DoxyParamCaption})}
+
+
+
+Print real matrix to terminal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & The matrix that is printed. \\
+\hline
+{\em m} & The number of rows in A. \\
+\hline
+{\em n} & The number of columns in B. \\
+\hline
+{\em msg} & The header message preceding the matrix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{matrix_8h_a078e23ec05fcd85756bc7f635cdc530d}\label{matrix_8h_a078e23ec05fcd85756bc7f635cdc530d}} 
+\index{matrix.\+h@{matrix.\+h}!print\+\_\+complex@{print\+\_\+complex}}
+\index{print\+\_\+complex@{print\+\_\+complex}!matrix.\+h@{matrix.\+h}}
+\subsubsection{\texorpdfstring{print\+\_\+complex()}{print\_complex()}}
+{\footnotesize\ttfamily void print\+\_\+complex (\begin{DoxyParamCaption}\item[{double $\ast$}]{Ar,  }\item[{double $\ast$}]{Ai,  }\item[{int}]{m,  }\item[{int}]{n,  }\item[{char $\ast$}]{msg }\end{DoxyParamCaption})}
+
+
+
+Print complex matrix to terminal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ar} & The real components of the matrix that is printed. \\
+\hline
+{\em Ai} & The imaginary components of the matrix that is printed. \\
+\hline
+{\em m} & The number of rows in Ar and Ai. \\
+\hline
+{\em n} & The number of columns in Br and Bi. \\
+\hline
+{\em msg} & The header message preceding the matrix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{matrix_8h_acbe5a7b7148849089ee154afefe99898}\label{matrix_8h_acbe5a7b7148849089ee154afefe99898}} 
+\index{matrix.\+h@{matrix.\+h}!product@{product}}
+\index{product@{product}!matrix.\+h@{matrix.\+h}}
+\subsubsection{\texorpdfstring{product()}{product()}}
+{\footnotesize\ttfamily void product (\begin{DoxyParamCaption}\item[{double $\ast$}]{A,  }\item[{double $\ast$}]{B,  }\item[{int}]{m,  }\item[{int}]{p,  }\item[{int}]{n,  }\item[{double $\ast$}]{C }\end{DoxyParamCaption})}
+
+
+
+Multiplies two matrices together. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & The first matrix. \\
+\hline
+{\em B} & The second matrix. \\
+\hline
+{\em m} & The number of rows in A. \\
+\hline
+{\em p} & The number of columns in A and number of rows in B. \\
+\hline
+{\em n} & The number of columns in B. \\
+\hline
+{\em C} & The multiplied matrix of order mxn. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{matrix_8h_a0c46c37f20473cbb1f1f2e3c82519e65}\label{matrix_8h_a0c46c37f20473cbb1f1f2e3c82519e65}} 
+\index{matrix.\+h@{matrix.\+h}!product\+\_\+complex@{product\+\_\+complex}}
+\index{product\+\_\+complex@{product\+\_\+complex}!matrix.\+h@{matrix.\+h}}
+\subsubsection{\texorpdfstring{product\+\_\+complex()}{product\_complex()}}
+{\footnotesize\ttfamily void product\+\_\+complex (\begin{DoxyParamCaption}\item[{double $\ast$}]{Ar,  }\item[{double $\ast$}]{Ai,  }\item[{double $\ast$}]{Br,  }\item[{double $\ast$}]{Bi,  }\item[{int}]{m,  }\item[{int}]{p,  }\item[{int}]{n,  }\item[{double $\ast$}]{Cr,  }\item[{double $\ast$}]{Ci }\end{DoxyParamCaption})}
+
+
+
+Multiplies two complex matrices together. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ar} & The real components of the first matrix. \\
+\hline
+{\em Ai} & The imaginary components of the first matrix. \\
+\hline
+{\em Br} & The real components of the second matrix. \\
+\hline
+{\em Bi} & The imaginary components of the second matrix. \\
+\hline
+{\em m} & The number of rows in A. \\
+\hline
+{\em p} & The number of columns in A and number of rows in B. \\
+\hline
+{\em n} & The number of columns in B. \\
+\hline
+{\em Cr} & The real components of the multiplied matrix. \\
+\hline
+{\em Ci} & The imaginary components of the multiplied matrix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{matrix_8h_a320be7f5a43b1820a83eca703ffe5897}\label{matrix_8h_a320be7f5a43b1820a83eca703ffe5897}} 
+\index{matrix.\+h@{matrix.\+h}!scale@{scale}}
+\index{scale@{scale}!matrix.\+h@{matrix.\+h}}
+\subsubsection{\texorpdfstring{scale()}{scale()}}
+{\footnotesize\ttfamily void scale (\begin{DoxyParamCaption}\item[{double $\ast$}]{A,  }\item[{int}]{m,  }\item[{int}]{n,  }\item[{double}]{k }\end{DoxyParamCaption})}
+
+
+
+Multiplies a matrix by a scalar. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & The input matrix, where the results are written to as well. \\
+\hline
+{\em m} & The number of rows in A. \\
+\hline
+{\em n} & The number of columns in A. \\
+\hline
+{\em k} & The scalar value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{matrix_8h_a4a7fcecfbdb3cf01665981c858dd5984}\label{matrix_8h_a4a7fcecfbdb3cf01665981c858dd5984}} 
+\index{matrix.\+h@{matrix.\+h}!slice@{slice}}
+\index{slice@{slice}!matrix.\+h@{matrix.\+h}}
+\subsubsection{\texorpdfstring{slice()}{slice()}}
+{\footnotesize\ttfamily void slice (\begin{DoxyParamCaption}\item[{double $\ast$}]{A,  }\item[{int}]{n,  }\item[{int}]{m1,  }\item[{int}]{m2,  }\item[{int}]{n1,  }\item[{int}]{n2,  }\item[{double $\ast$}]{B }\end{DoxyParamCaption})}
+
+
+
+Slices a matrix. 
+
+The sliced matrix is equal to A\mbox{[}m1\+:m2-\/1, n1\+:n2-\/1\mbox{]}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & The input matrix. \\
+\hline
+{\em n} & The number of columns in A. \\
+\hline
+{\em m1} & The first row to slice from. \\
+\hline
+{\em m2} & The row after the stop slicing at. \\
+\hline
+{\em n1} & The first column to slice from. \\
+\hline
+{\em n2} & The column after the stop slicing at. \\
+\hline
+{\em B} & The sliced matrix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{matrix_8h_ab67f48f8dfa82239b1f5dfd90aad2c1d}\label{matrix_8h_ab67f48f8dfa82239b1f5dfd90aad2c1d}} 
+\index{matrix.\+h@{matrix.\+h}!subtract@{subtract}}
+\index{subtract@{subtract}!matrix.\+h@{matrix.\+h}}
+\subsubsection{\texorpdfstring{subtract()}{subtract()}}
+{\footnotesize\ttfamily void subtract (\begin{DoxyParamCaption}\item[{double $\ast$}]{A,  }\item[{double $\ast$}]{B,  }\item[{int}]{m,  }\item[{int}]{n,  }\item[{double $\ast$}]{C }\end{DoxyParamCaption})}
+
+
+
+Subtracts two matrices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & The first matrix. \\
+\hline
+{\em B} & The second matrix. \\
+\hline
+{\em m} & The number of rows in A and B. \\
+\hline
+{\em n} & The number of columns in A and B. \\
+\hline
+{\em C} & The subtracted matrix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{matrix_8h_a296d2426aeb7a46d455ce46f47d97eb9}\label{matrix_8h_a296d2426aeb7a46d455ce46f47d97eb9}} 
+\index{matrix.\+h@{matrix.\+h}!transpose@{transpose}}
+\index{transpose@{transpose}!matrix.\+h@{matrix.\+h}}
+\subsubsection{\texorpdfstring{transpose()}{transpose()}}
+{\footnotesize\ttfamily void transpose (\begin{DoxyParamCaption}\item[{double $\ast$}]{A,  }\item[{int}]{m,  }\item[{int}]{n,  }\item[{double $\ast$}]{B }\end{DoxyParamCaption})}
+
+
+
+Takes the transpose of a matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & The input matrix to transpose. \\
+\hline
+{\em m} & The number of rows in A. \\
+\hline
+{\em n} & The number of columns in A. \\
+\hline
+{\em B} & The transposed matrix of order nxm. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{matrix_8h_af968034cbd25008e068ad06c1daa5cfe}\label{matrix_8h_af968034cbd25008e068ad06c1daa5cfe}} 
+\index{matrix.\+h@{matrix.\+h}!transpose\+\_\+complex@{transpose\+\_\+complex}}
+\index{transpose\+\_\+complex@{transpose\+\_\+complex}!matrix.\+h@{matrix.\+h}}
+\subsubsection{\texorpdfstring{transpose\+\_\+complex()}{transpose\_complex()}}
+{\footnotesize\ttfamily void transpose\+\_\+complex (\begin{DoxyParamCaption}\item[{double $\ast$}]{Ar,  }\item[{double $\ast$}]{Ai,  }\item[{int}]{m,  }\item[{int}]{n,  }\item[{double $\ast$}]{Br,  }\item[{double $\ast$}]{Bi }\end{DoxyParamCaption})}
+
+
+
+Takes the transpose (complex conjugate) of a complex matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ar} & The real components of the first matrix. \\
+\hline
+{\em Ai} & The imaginary components of the first matrix. \\
+\hline
+{\em m} & The number of rows in A. \\
+\hline
+{\em n} & The number of columns in B. \\
+\hline
+{\em Br} & The real components of the transposed matrix. \\
+\hline
+{\em Bi} & The imaginary components of the transposed matrix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void. 
+\end{DoxyReturn}
