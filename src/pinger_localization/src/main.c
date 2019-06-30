@@ -1,5 +1,5 @@
 /**	@file main.c
- * 	@brief Runs MUSIC for AVBotz's acoustic localization system.
+ * 	@brief Runs MUSIC for an acoustic localization system.
  * 	
  * 	@author David Zhang (Davarco)
  * 	@bugs No known bugs.
@@ -12,11 +12,15 @@
 #include "matrix.h"
 
 
+/** @brief Localization start.
+ * 
+ * 	@return Should not return.
+ */
 int main()
 {
 	// while (true) 
 	{
-		printf("Calculating DOA (direction-of-arrival) using MUSIC algorithm.\n");
+		printf("Calculating DOA (direction-of-arrival) using MUSIC.\n");
 		double ps[N_PHN];
 		dft(ps);
 		printf("\nPhase Shifts (radians): %f %f %f %f\n", 
