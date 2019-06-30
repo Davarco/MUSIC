@@ -13,7 +13,7 @@
 
 /** @brief Localization start.
  * 
- * 	@return Should not return.
+ *  @return Should not return.
  */
 int main()
 {
