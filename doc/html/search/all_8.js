@@ -1,7 +1,10 @@
 var searchData=
 [
-  ['scale',['scale',['../matrix_8c.html#ab5b944d92518695545660022e285fce6',1,'scale(double *A, int m, int n, double a):&#160;matrix.c'],['../matrix_8h.html#a320be7f5a43b1820a83eca703ffe5897',1,'scale(double *A, int m, int n, double k):&#160;matrix.c']]],
-  ['simulate_2ec',['simulate.c',['../simulate_8c.html',1,'']]],
-  ['slice',['slice',['../matrix_8c.html#a4a7fcecfbdb3cf01665981c858dd5984',1,'slice(double *A, int n, int m1, int m2, int n1, int n2, double *B):&#160;matrix.c'],['../matrix_8h.html#a4a7fcecfbdb3cf01665981c858dd5984',1,'slice(double *A, int n, int m1, int m2, int n1, int n2, double *B):&#160;matrix.c']]],
-  ['subtract',['subtract',['../matrix_8c.html#ab67f48f8dfa82239b1f5dfd90aad2c1d',1,'subtract(double *A, double *B, int m, int n, double *C):&#160;matrix.c'],['../matrix_8h.html#ab67f48f8dfa82239b1f5dfd90aad2c1d',1,'subtract(double *A, double *B, int m, int n, double *C):&#160;matrix.c']]]
+  ['ping_5fduration',['PING_DURATION',['../pinger__simulation_2src_2config_8h.html#aa7dc7eb774a66c07fe17a3fe0224fe03',1,'config.h']]],
+  ['pinger_5fx_5floc',['PINGER_X_LOC',['../pinger__simulation_2src_2config_8h.html#a43b5bb333b6864dd55d19cb078885e1c',1,'config.h']]],
+  ['pinger_5fy_5floc',['PINGER_Y_LOC',['../pinger__simulation_2src_2config_8h.html#a7231fef7df5233df8a66ea9ca83dd180',1,'config.h']]],
+  ['print',['print',['../matrix_8c.html#a81c96d873cc9c72c183277f3318b9488',1,'print(double *A, int m, int n, char *msg):&#160;matrix.c'],['../matrix_8h.html#a81c96d873cc9c72c183277f3318b9488',1,'print(double *A, int m, int n, char *msg):&#160;matrix.c']]],
+  ['print_5fcomplex',['print_complex',['../matrix_8c.html#a078e23ec05fcd85756bc7f635cdc530d',1,'print_complex(double *Ar, double *Ai, int m, int n, char *msg):&#160;matrix.c'],['../matrix_8h.html#a078e23ec05fcd85756bc7f635cdc530d',1,'print_complex(double *Ar, double *Ai, int m, int n, char *msg):&#160;matrix.c']]],
+  ['product',['product',['../matrix_8c.html#acbe5a7b7148849089ee154afefe99898',1,'product(double *A, double *B, int m, int p, int n, double *C):&#160;matrix.c'],['../matrix_8h.html#acbe5a7b7148849089ee154afefe99898',1,'product(double *A, double *B, int m, int p, int n, double *C):&#160;matrix.c']]],
+  ['product_5fcomplex',['product_complex',['../matrix_8c.html#a0c46c37f20473cbb1f1f2e3c82519e65',1,'product_complex(double *Ar, double *Ai, double *Br, double *Bi, int m, int p, int n, double *Cr, double *Ci):&#160;matrix.c'],['../matrix_8h.html#a0c46c37f20473cbb1f1f2e3c82519e65',1,'product_complex(double *Ar, double *Ai, double *Br, double *Bi, int m, int p, int n, double *Cr, double *Ci):&#160;matrix.c']]]
 ];

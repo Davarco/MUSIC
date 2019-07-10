@@ -12,8 +12,7 @@ Functions used to compute D\+OA (direction-\/of-\/arrival) using M\+U\+S\+IC.
 {\ttfamily \#include \char`\"{}music.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}matrix.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\newline
-Include dependency graph for music.\+c\+:
-\nopagebreak
+Include dependency graph for music.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -37,8 +36,6 @@ Functions used to compute D\+OA (direction-\/of-\/arrival) using M\+U\+S\+IC.
 \begin{DoxyAuthor}{Author}
 David Zhang (Davarco) 
 \end{DoxyAuthor}
-\begin{DoxyRefDesc}{Bug}
-\item[\hyperlink{bug__bug000001}{Bug}]No known bugs. \end{DoxyRefDesc}
 
 
 \subsection{Function Documentation}
@@ -57,9 +54,6 @@ Computes a D\+FT at the pinger frequency for phase shifts.
 {\em ps} & The address where the M phase shifts (radians) will be written. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Void. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{music_8c_ac7969308bd0fb9d760e3b38653439df2}\label{music_8c_ac7969308bd0fb9d760e3b38653439df2}} 
 \index{music.\+c@{music.\+c}!music@{music}}
 \index{music@{music}!music.\+c@{music.\+c}}
@@ -79,9 +73,6 @@ M\+U\+S\+IC is limited to a \mbox{[}-\/90, 90\mbox{]} degree window. 0 is north,
 {\em angle} & The address where the D\+OA (degrees) will be written. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Void. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{music_8c_a6aeb3e94a67f90f5a2cdd4f83a0ee7cb}\label{music_8c_a6aeb3e94a67f90f5a2cdd4f83a0ee7cb}} 
 \index{music.\+c@{music.\+c}!tdoa@{tdoa}}
 \index{tdoa@{tdoa}!music.\+c@{music.\+c}}
@@ -101,6 +92,3 @@ The first T\+D\+OA value should be 0, as all the T\+D\+O\+As are calculated rela
 {\em tdoa} & The address where the M T\+D\+O\+As (periods) will be written. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Void. 
-\end{DoxyReturn}

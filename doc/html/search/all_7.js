@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['print',['print',['../matrix_8c.html#a81c96d873cc9c72c183277f3318b9488',1,'print(double *A, int m, int n, char *msg):&#160;matrix.c'],['../matrix_8h.html#a81c96d873cc9c72c183277f3318b9488',1,'print(double *A, int m, int n, char *msg):&#160;matrix.c']]],
-  ['print_5fcomplex',['print_complex',['../matrix_8c.html#a078e23ec05fcd85756bc7f635cdc530d',1,'print_complex(double *Ar, double *Ai, int m, int n, char *msg):&#160;matrix.c'],['../matrix_8h.html#a078e23ec05fcd85756bc7f635cdc530d',1,'print_complex(double *Ar, double *Ai, int m, int n, char *msg):&#160;matrix.c']]],
-  ['product',['product',['../matrix_8c.html#acbe5a7b7148849089ee154afefe99898',1,'product(double *A, double *B, int m, int p, int n, double *C):&#160;matrix.c'],['../matrix_8h.html#acbe5a7b7148849089ee154afefe99898',1,'product(double *A, double *B, int m, int p, int n, double *C):&#160;matrix.c']]],
-  ['product_5fcomplex',['product_complex',['../matrix_8c.html#a0c46c37f20473cbb1f1f2e3c82519e65',1,'product_complex(double *Ar, double *Ai, double *Br, double *Bi, int m, int p, int n, double *Cr, double *Ci):&#160;matrix.c'],['../matrix_8h.html#a0c46c37f20473cbb1f1f2e3c82519e65',1,'product_complex(double *Ar, double *Ai, double *Br, double *Bi, int m, int p, int n, double *Cr, double *Ci):&#160;matrix.c']]]
+  ['n',['N',['../pinger__localization_2src_2config_8h.html#ab2b6b0c222cd1ce70d6a831f57241e59',1,'config.h']]],
+  ['n_5fdft',['N_DFT',['../pinger__localization_2src_2config_8h.html#ad72dfe6a84df9f192b62856b1cc697d0',1,'config.h']]],
+  ['n_5fphn',['N_PHN',['../pinger__localization_2src_2config_8h.html#a2078d250ff41c35b39b40b9851765183',1,'config.h']]],
+  ['noise',['NOISE',['../pinger__simulation_2src_2config_8h.html#a1252823eae0fb4c87dddc5c2caef7790',1,'config.h']]],
+  ['num_5fphones',['NUM_PHONES',['../pinger__simulation_2src_2config_8h.html#a091fa5a1559fc7162d665edb1bed521e',1,'config.h']]]
 ];

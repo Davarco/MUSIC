@@ -2,7 +2,6 @@
  *  @brief Simulates sampling a pinger in an underwater environment.
  *
  *  @author David Zhang (davarco)
- *  @bug No known bugs.
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,14 +11,6 @@
 
 double randn(double, double);
 
-/** @brief Simulator start.
- *
- *  This code simulates sampling a pinger by computing the theoretical phase
- *  shifts of each hydrophone, while adding noise to the measurements. It sends
- *  the data over a named pipe for the localization system to read.
- *
- *  @return Should not return.
- */
 int main()
 {
 	// Open named pipe to localization package.
@@ -45,6 +36,9 @@ int main()
 	}
 	// printf("Distances (radians): %f %f %f %f\n", d[0], d[1], d[2], d[3]);
 	printf("Phase Shifts (degrees): %f %f %f %f\n", ps[0], ps[1], ps[2], ps[3]);
+	printf("Phase Shifts (degrees): %f %f %f %f\n", 
+			ps[0]*M_PI/180., ps[1]*M_PI/180., 
+			ps[2]*M_PI/180., ps[3]*M_PI/180.);
 
 	// Calculate amount of points where pinger is not pinging.
 	// Sidenote: Don't do /TS in place of *FS. Since PING_DURATION and TS are

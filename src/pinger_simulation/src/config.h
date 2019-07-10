@@ -1,62 +1,76 @@
-/** @file config.h
+/** @file src/pinger_simulation/src/config.h
  *  @brief Constants to simulate a pinger, its environment, and sampling.
  *
  *  @author David Zhang (Davarco)
  *  @bugs No known bugs.
  */
-#ifndef CONFIG_HPP 
-#define CONFIG_HPP 
+#ifndef CONFIG_H 
+#define CONFIG_H 
 
 #include <math.h>
 
-/*
- * This part is specific to the AVBotz AUV team. Our hydrophones are set up so 
- * that they are in a perfect square, as shown below.
- *
- * *******
- * * 2 1 *
- * * 4 3 *
- * ******* 
- *
- * NUM_PHONES = no explanation needed.
- * SPACING = the distance between two hydrophones (e.g 2 and 1) (meters).
+/*! \name Signal receiver configuration.
+ */
+///@{
+/** Total number of signal receivers.
  */
 #define NUM_PHONES 4
-#define SPACING 0.0127
 
-/*
- * Environemnt settings.
- *
- * C = wave speed, set to speed of sound in water (m/s).
+/** Spacing between two signal receivers.
+ */
+#define SPACING 0.0127
+///@}
+
+/*! \name Environment settings.
+ */
+///@{
+/** Wave speed, set to speed of sound in water (m/s).
  */
 #define C 1480.
+///@}
 
-/*
- * Pinger settings (North-East coordinate plane).
- *
- * PINGER_X_LOC = units north, or forward (meters).
- * PINGER_Y_LOC = units east, or right (meters).
- * F0 = pinger frequency (Hz).
- * T0 = pinger period (seconds).
- * NOISE = noise, expressed as a fraction of the signal (0.1 = 10%).
- * TIME_BETWEEN_PINGS = amount of time pinger is silent per burst (seconds).
- * PING_DURATION = length of ping burst (seconds).
+/*! \name Environment settings.
  */
-#define PINGER_X_LOC 7.
-#define PINGER_Y_LOC 3.
+///@{
+/** Units north (meters).
+ */
+#define PINGER_X_LOC 4.
+
+/** Units east (meters).
+ */
+#define PINGER_Y_LOC -1.
+
+/** Pinger freq (Hz).
+ */
 #define F0 25000.
-#define T0 1./F0
-#define NOISE 0.0
-#define TIME_BETWEEN_PINGS 0.5
-#define PING_DURATION 0.005
 
-/*
- * Sampling settings.
- *
- * FS = sampling rate (Hz).
- * TS = sampling period (seconds).
+/** Pinger period (seconds).
  */
-#define FS 100000.
+#define T0 1./F0
+
+/** Noise, expressed as a fraction of the signal (0.1=10%).
+ */
+#define NOISE 0.0
+
+/** Amount of time pinger is silent per burst (seconds).
+ */
+#define TIME_BETWEEN_PINGS 0.5
+
+/** Length of a ping burst (seconds).
+ */
+#define PING_DURATION 0.005
+///@}
+
+/*! \name Sampling settings.
+ */
+//@{
+/** Sampling rate (Hz).
+ */
+#define FS 400000.
+
+/** Sampling period (seconds).
+ */
 #define TS 1./FS
+///@}
 
 #endif 

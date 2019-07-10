@@ -22,7 +22,6 @@
  *  @param m The number of rows in A.
  *  @param n The number of columns in B.
  *  @param msg The header message preceding the matrix.
- *  @return Void.
  */
 void print(double *A, int m, int n, char *msg);
 
@@ -33,7 +32,6 @@ void print(double *A, int m, int n, char *msg);
  *  @param m The number of rows in Ar and Ai.
  *  @param n The number of columns in Br and Bi.
  *  @param msg The header message preceding the matrix.
- *  @return Void.
  */
 void print_complex(double *Ar, double *Ai, int m, int n, char *msg);
 
@@ -41,7 +39,6 @@ void print_complex(double *Ar, double *Ai, int m, int n, char *msg);
  *
  *  @param A The address where the matrix is written.
  *  @param n The number of rows and columns of A.
- *  @return Void.
  */
 void identity(double *A, int n);
 
@@ -51,7 +48,6 @@ void identity(double *A, int n);
  *  @param m The number of rows in A and B.
  *  @param n The number of columns in A and B.
  *  @param B The matrix where elements are written to.
- *  @return Void.
  */
 void copy(double *A, int m, int n, double *B);
 
@@ -63,7 +59,6 @@ void copy(double *A, int m, int n, double *B);
  *  @param p The number of columns in A and number of rows in B.
  *  @param n The number of columns in B.
  *  @param C The multiplied matrix of order mxn.
- *  @return Void.
  */
 void product(double *A, double *B, int m, int p, int n, double *C);
 
@@ -78,7 +73,6 @@ void product(double *A, double *B, int m, int p, int n, double *C);
  *  @param n The number of columns in B.
  *  @param Cr The real components of the multiplied matrix.
  *  @param Ci The imaginary components of the multiplied matrix.
- *  @return Void.
  */
 void product_complex(double *Ar, double *Ai, double *Br, double *Bi,
 		int m, int p, int n, double *Cr, double *Ci);
@@ -90,7 +84,6 @@ void product_complex(double *Ar, double *Ai, double *Br, double *Bi,
  *  @param m The number of rows in A and B.
  *  @param n The number of columns in A and B.
  *  @param C The added matrix.
- *  @return Void.
  */
 void add(double *A, double *B, int m, int n, double *C);
 
@@ -101,7 +94,6 @@ void add(double *A, double *B, int m, int n, double *C);
  *  @param m The number of rows in A and B.
  *  @param n The number of columns in A and B.
  *  @param C The subtracted matrix.
- *  @return Void.
  */
 void subtract(double *A, double *B, int m, int n, double *C);
 
@@ -111,7 +103,6 @@ void subtract(double *A, double *B, int m, int n, double *C);
  *  @param m The number of rows in A.
  *  @param n The number of columns in A.
  *  @param B The transposed matrix of order nxm.
- *  @return Void.
  */
 void transpose(double *A, int m, int n, double *B);
 
@@ -123,7 +114,6 @@ void transpose(double *A, int m, int n, double *B);
  *  @param n The number of columns in B.
  *  @param Br The real components of the transposed matrix.
  *  @param Bi The imaginary components of the transposed matrix.
- *  @return Void.
  */
 void transpose_complex(double *Ar, double *Ai, int m, int n, 
 		double *Br, double *Bi);
@@ -134,7 +124,6 @@ void transpose_complex(double *Ar, double *Ai, int m, int n,
  *  @param m The number of rows in A.
  *  @param n The number of columns in A.
  *  @param k The scalar value.
- *  @return Void.
  */
 void scale(double *A, int m, int n, double k);
 
@@ -149,7 +138,6 @@ void scale(double *A, int m, int n, double k);
  *  @param n1 The first column to slice from.
  *  @param n2 The column after the stop slicing at.
  *  @param B The sliced matrix.
- *  @return Void.
  */
 void slice(double *A, int n, int m1, int m2, int n1, int n2, double *B);
 
@@ -158,7 +146,6 @@ void slice(double *A, int n, int m1, int m2, int n1, int n2, double *B);
  *  @param A The input matrix, must be square.
  *  @param n The number of rows and columns in A.
  *  @param B The inverted matrix.
- *  @return Void.
  */
 void inverse(double *A, int n, double *B);
 
@@ -168,7 +155,6 @@ void inverse(double *A, int n, double *B);
  *  @param n The number of rows and columns in A.
  *  @param val The address where the eigenvalues are stored.
  *  @param vec The address where the eigenvectors are stored.
- *  @return Void.
  */
 void eigen(double *A, int n, double *val, double *vec);
 
@@ -180,7 +166,6 @@ void eigen(double *A, int n, double *val, double *vec);
  *  @param val The address where the eigenvalues are stored.
  *  @param vecr The address for the real components of the eigenvectors.
  *  @param veci The address for the imaginary components of the eigenvectors.
- *  @return Void.
  */
 void eigen_complex(double *Ar, double *Ai, int n, double *val, 
 		double *vecr, double *veci);

@@ -10,7 +10,6 @@
 /** @brief Computes a DFT at the pinger frequency for phase shifts.
  *
  *  @param ps The address where the M phase shifts (radians) will be written.
- *  @return Void.
  */
 void dft(double *ps);
 
@@ -21,7 +20,6 @@ void dft(double *ps);
  *
  *  @param ps The M phase shifts (radians).
  *  @param tdoa The address where the M TDOAs (periods) will be written.
- *  @return Void.
  */
 void tdoa(double *ps, double *tdoa);
 
@@ -31,7 +29,6 @@ void tdoa(double *ps, double *tdoa);
  *
  *  @param tdoa The M TDOAs (periods).
  *  @param angle The address where the DOA (degrees) will be written.
- *  @return Void.
  */
 void music(double *tdoa, double *angle);
 

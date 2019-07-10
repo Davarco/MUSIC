@@ -1,4 +1,4 @@
-/** @file config.h
+/** @file src/pinger_localization/src/config.h
  *  @brief Contains constants needed to calculate DOA (direction-of-arrival).
  *
  *  These values should match the simulated settings in pinger_simulation, or
@@ -9,54 +9,44 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-/*
- * Wave speed (m/s).
+/** Wave speed (m/s).
  */
 const double C = 1480.;
 
-/*
- * Sampling speed (Hz).
+/** Sampling speed (Hz).
  */
-const double FS = 100000.;
+const double FS = 400000.;
 
-/*
- * Pinger frequency (Hz).
+/** Pinger frequency (Hz).
  */
 const double F0 = 25000.;
 
-/*
- * Signal receiver spacing (meters).
+/** Signal receiver spacing (meters).
  */
 const double SPACING = 0.0127;
 
-/*
- * DOA precision (degrees).
+/** DOA precision (degrees).
  */
 const double SEARCH_INTERVAL = 0.1;
 
-/*
- * Total number of signal receivers.
+/** Total number of signal receivers.
  */
 const int N_PHN = 4;
 
-/*
- * Number of points in DFT.
+/** Number of points in DFT.
  */
 const int N_DFT = 2048;
 
-/*
- * Number of points to simulate for signal.
+/** Number of points to simulate for signal.
  */
 const int N = 16;
 
-/*
- * Number of signal receivers per MUSIC calculation.
+/** Number of signal receivers per MUSIC calculation.
  */
 const int M = 2;
 
-/*
- * Log option.
+/** Log option.
  */
-const int DEBUG = 1;
+const int DEBUG = 0;
 
 #endif 

@@ -8,8 +8,7 @@ Functions used for real and complex matrix operations.
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$math.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}matrix.\+h\char`\"{}}\newline
-Include dependency graph for matrix.\+c\+:
-\nopagebreak
+Include dependency graph for matrix.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -27,13 +26,13 @@ void \hyperlink{matrix_8c_a0c767e9d2827cc3ac53da5272dfab3ca}{identity} (double $
 \begin{DoxyCompactList}\small\item\em Create an identity matrix of order nxn. \end{DoxyCompactList}\item 
 void \hyperlink{matrix_8c_a347b1b98c0fa015d4d588fcee0332043}{copy} (double $\ast$A, int m, int n, double $\ast$B)
 \begin{DoxyCompactList}\small\item\em Copies the elements from one matrix to another. \end{DoxyCompactList}\item 
-void \hyperlink{matrix_8c_acbe5a7b7148849089ee154afefe99898}{product} (double $\ast$A, double $\ast$B, int m, int p, int n, double $\ast$C)
+void \hyperlink{matrix_8c_acbe5a7b7148849089ee154afefe99898}{product} (double $\ast$A, double $\ast$B, int m, int p, int n, double $\ast$\hyperlink{pinger__localization_2src_2config_8h_a9e8a46a0e00368ad98642587ca4ebdbe}{C})
 \begin{DoxyCompactList}\small\item\em Multiplies two matrices together. \end{DoxyCompactList}\item 
 void \hyperlink{matrix_8c_a0c46c37f20473cbb1f1f2e3c82519e65}{product\+\_\+complex} (double $\ast$Ar, double $\ast$Ai, double $\ast$Br, double $\ast$Bi, int m, int p, int n, double $\ast$Cr, double $\ast$Ci)
 \begin{DoxyCompactList}\small\item\em Multiplies two complex matrices together. \end{DoxyCompactList}\item 
-void \hyperlink{matrix_8c_adb13c652887fd0e887c88d53d9f4b323}{add} (double $\ast$A, double $\ast$B, int m, int n, double $\ast$C)
+void \hyperlink{matrix_8c_adb13c652887fd0e887c88d53d9f4b323}{add} (double $\ast$A, double $\ast$B, int m, int n, double $\ast$\hyperlink{pinger__localization_2src_2config_8h_a9e8a46a0e00368ad98642587ca4ebdbe}{C})
 \begin{DoxyCompactList}\small\item\em Adds two matrices together. \end{DoxyCompactList}\item 
-void \hyperlink{matrix_8c_ab67f48f8dfa82239b1f5dfd90aad2c1d}{subtract} (double $\ast$A, double $\ast$B, int m, int n, double $\ast$C)
+void \hyperlink{matrix_8c_ab67f48f8dfa82239b1f5dfd90aad2c1d}{subtract} (double $\ast$A, double $\ast$B, int m, int n, double $\ast$\hyperlink{pinger__localization_2src_2config_8h_a9e8a46a0e00368ad98642587ca4ebdbe}{C})
 \begin{DoxyCompactList}\small\item\em Subtracts two matrices. \end{DoxyCompactList}\item 
 void \hyperlink{matrix_8c_a296d2426aeb7a46d455ce46f47d97eb9}{transpose} (double $\ast$A, int m, int n, double $\ast$B)
 \begin{DoxyCompactList}\small\item\em Takes the transpose of a matrix. \end{DoxyCompactList}\item 
@@ -83,9 +82,6 @@ Adds two matrices together.
 {\em C} & The added matrix. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Void. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{matrix_8c_a347b1b98c0fa015d4d588fcee0332043}\label{matrix_8c_a347b1b98c0fa015d4d588fcee0332043}} 
 \index{matrix.\+c@{matrix.\+c}!copy@{copy}}
 \index{copy@{copy}!matrix.\+c@{matrix.\+c}}
@@ -107,9 +103,6 @@ Copies the elements from one matrix to another.
 {\em B} & The matrix where elements are written to. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Void. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{matrix_8c_a74c8fe363560854e31ccc3862fa00e8b}\label{matrix_8c_a74c8fe363560854e31ccc3862fa00e8b}} 
 \index{matrix.\+c@{matrix.\+c}!eigen@{eigen}}
 \index{eigen@{eigen}!matrix.\+c@{matrix.\+c}}
@@ -131,9 +124,6 @@ Takes the eigenvalues and eigenvectors of a real matrix.
 {\em vec} & The address where the eigenvectors are stored. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Void. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{matrix_8c_ab429c38bf9e0188c44427627e1f692f0}\label{matrix_8c_ab429c38bf9e0188c44427627e1f692f0}} 
 \index{matrix.\+c@{matrix.\+c}!eigen\+\_\+complex@{eigen\+\_\+complex}}
 \index{eigen\+\_\+complex@{eigen\+\_\+complex}!matrix.\+c@{matrix.\+c}}
@@ -159,9 +149,6 @@ Takes the eigenvalues and eigenvectors of a complex matrix.
 {\em veci} & The address for the imaginary components of the eigenvectors. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Void. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{matrix_8c_a0c767e9d2827cc3ac53da5272dfab3ca}\label{matrix_8c_a0c767e9d2827cc3ac53da5272dfab3ca}} 
 \index{matrix.\+c@{matrix.\+c}!identity@{identity}}
 \index{identity@{identity}!matrix.\+c@{matrix.\+c}}
@@ -179,9 +166,6 @@ Create an identity matrix of order nxn.
 {\em n} & The number of rows and columns of A. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Void. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{matrix_8c_ad58cbef9da2956cfcb53e1e9f361b61f}\label{matrix_8c_ad58cbef9da2956cfcb53e1e9f361b61f}} 
 \index{matrix.\+c@{matrix.\+c}!inverse@{inverse}}
 \index{inverse@{inverse}!matrix.\+c@{matrix.\+c}}
@@ -201,9 +185,6 @@ Takes the inverse of a matrix.
 {\em B} & The inverted matrix. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Void. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{matrix_8c_a81c96d873cc9c72c183277f3318b9488}\label{matrix_8c_a81c96d873cc9c72c183277f3318b9488}} 
 \index{matrix.\+c@{matrix.\+c}!print@{print}}
 \index{print@{print}!matrix.\+c@{matrix.\+c}}
@@ -225,9 +206,6 @@ Print real matrix to terminal.
 {\em msg} & The header message preceding the matrix. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Void. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{matrix_8c_a078e23ec05fcd85756bc7f635cdc530d}\label{matrix_8c_a078e23ec05fcd85756bc7f635cdc530d}} 
 \index{matrix.\+c@{matrix.\+c}!print\+\_\+complex@{print\+\_\+complex}}
 \index{print\+\_\+complex@{print\+\_\+complex}!matrix.\+c@{matrix.\+c}}
@@ -251,9 +229,6 @@ Print complex matrix to terminal.
 {\em msg} & The header message preceding the matrix. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Void. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{matrix_8c_acbe5a7b7148849089ee154afefe99898}\label{matrix_8c_acbe5a7b7148849089ee154afefe99898}} 
 \index{matrix.\+c@{matrix.\+c}!product@{product}}
 \index{product@{product}!matrix.\+c@{matrix.\+c}}
@@ -279,9 +254,6 @@ Multiplies two matrices together.
 {\em C} & The multiplied matrix of order mxn. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Void. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{matrix_8c_a0c46c37f20473cbb1f1f2e3c82519e65}\label{matrix_8c_a0c46c37f20473cbb1f1f2e3c82519e65}} 
 \index{matrix.\+c@{matrix.\+c}!product\+\_\+complex@{product\+\_\+complex}}
 \index{product\+\_\+complex@{product\+\_\+complex}!matrix.\+c@{matrix.\+c}}
@@ -313,9 +285,6 @@ Multiplies two complex matrices together.
 {\em Ci} & The imaginary components of the multiplied matrix. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Void. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{matrix_8c_ab5b944d92518695545660022e285fce6}\label{matrix_8c_ab5b944d92518695545660022e285fce6}} 
 \index{matrix.\+c@{matrix.\+c}!scale@{scale}}
 \index{scale@{scale}!matrix.\+c@{matrix.\+c}}
@@ -337,9 +306,6 @@ Multiplies a matrix by a scalar.
 {\em k} & The scalar value. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Void. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{matrix_8c_a4a7fcecfbdb3cf01665981c858dd5984}\label{matrix_8c_a4a7fcecfbdb3cf01665981c858dd5984}} 
 \index{matrix.\+c@{matrix.\+c}!slice@{slice}}
 \index{slice@{slice}!matrix.\+c@{matrix.\+c}}
@@ -369,9 +335,6 @@ The sliced matrix is equal to A\mbox{[}m1\+:m2-\/1, n1\+:n2-\/1\mbox{]}.
 {\em B} & The sliced matrix. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Void. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{matrix_8c_ab67f48f8dfa82239b1f5dfd90aad2c1d}\label{matrix_8c_ab67f48f8dfa82239b1f5dfd90aad2c1d}} 
 \index{matrix.\+c@{matrix.\+c}!subtract@{subtract}}
 \index{subtract@{subtract}!matrix.\+c@{matrix.\+c}}
@@ -395,9 +358,6 @@ Subtracts two matrices.
 {\em C} & The subtracted matrix. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Void. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{matrix_8c_a296d2426aeb7a46d455ce46f47d97eb9}\label{matrix_8c_a296d2426aeb7a46d455ce46f47d97eb9}} 
 \index{matrix.\+c@{matrix.\+c}!transpose@{transpose}}
 \index{transpose@{transpose}!matrix.\+c@{matrix.\+c}}
@@ -419,9 +379,6 @@ Takes the transpose of a matrix.
 {\em B} & The transposed matrix of order nxm. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Void. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{matrix_8c_af968034cbd25008e068ad06c1daa5cfe}\label{matrix_8c_af968034cbd25008e068ad06c1daa5cfe}} 
 \index{matrix.\+c@{matrix.\+c}!transpose\+\_\+complex@{transpose\+\_\+complex}}
 \index{transpose\+\_\+complex@{transpose\+\_\+complex}!matrix.\+c@{matrix.\+c}}
@@ -447,6 +404,3 @@ Takes the transpose (complex conjugate) of a complex matrix.
 {\em Bi} & The imaginary components of the transposed matrix. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Void. 
-\end{DoxyReturn}

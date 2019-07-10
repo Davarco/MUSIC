@@ -2,7 +2,6 @@
  *  @brief Functions used to compute DOA (direction-of-arrival) using MUSIC.
  *
  *  @author David Zhang (Davarco)
- *  @bug No known bugs.
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,6 +16,7 @@ void dft(double *ps)
 {
 	// Open named pipe to receive data from pigner simulator.
 	FILE *in = fopen("datapipe", "r");
+	// FILE *in = fopen("data.txt", "r");
 
 	// Write data to file so it can be plotted.
 	FILE *out = fopen("signal.txt", "w");
@@ -30,16 +30,16 @@ void dft(double *ps)
 		imag[i] = 0.0;
 		ps[i] = 0.0;
 	}
+	double t;
+	double phones[4];
 	for (int n = 0; n < N_DFT; n++)
 	{
-		double t;
-		double phones[4];
+		// t += 1./FS;
 		fscanf(in, "%lf %lf %lf %lf %lf", &t, 
 				&phones[0], &phones[1], &phones[2], &phones[3]);
 		fprintf(out, "%f,%f,%f,%f,%f\n", t, 
 				phones[0], phones[1], phones[2], phones[3]);
 		// if (n == 0) printf("\nTime: %f\n", t);
-
 		double angle = 2*M_PI*n*F0/FS;
 		for (int h = 0; h < N_PHN; h++)
 		{
