@@ -1,3 +1,21 @@
+/*
+ * Acoustic-MUSIC
+ * Copyright (C) 2019 David Zhang
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * ================================================================== */
+
 /** @file matrix.c
  *  @brief Functions used for real and complex matrix operations.
  *
@@ -189,21 +207,15 @@ void eigen(double *A, int n, double *val, double *vec)
 			return;
 		}
 
-		double threshold = (i < 3) ? 0.2*sum/(n*n) : 0.;
-
 		for (int r = 0; r < n-1; r++)
 		{
 			for (int c = r+1; c < n; c++)
 			{
-				double g = 100.*fabs(A[r*n+c]);
-				if (i > 3 && fabs(val[r])+g == fabs(val[r]) && 
-						fabs(val[c])+g == fabs(val[c]))
-					A[r*n+c] = 0.;
-				else if (fabs(A[r*n+c]) > threshold)
+				if (fabs(A[r*n+c]) > 0.)
 				{
 					double h = val[c]-val[r];
 					double t = 0.;
-					if (fabs(h)+g == fabs(h))
+					if (fabs(A[r*n+c]) == 0.)
 						t = A[r*n+c]/h;
 					else 
 					{
