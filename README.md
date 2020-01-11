@@ -1,5 +1,5 @@
-# Acoustic-MUSIC
-Acoustic-MUSIC is a set of tools meant for pinger localization using MUSIC (Multiple Signal Classification).
+# MUSIC
+MUSIC is a set of tools meant for pinger localization using MUSIC (Multiple Signal Classification).
 
 ## Compiling and Running
 
